@@ -55,7 +55,7 @@ module.exports = class ballCommand extends Command {
 	}
 
 	run(message) {
-		const random = Math.floor(Math.floor(Math.random()));
+		let random = Math.floor(Math.random() * 100);
 		const agreeSmiles = ['', ':nerd:', '', '', ':face_with_raised_eyebrow:', '', '', ':lying_face:', '', ':smiling_imp:', '', '', '', ':kissing_heart:'];
 		const disagreeSmiles = [':fearful:', '', '', ':slight_frown:', '', '', '', '', ':pensive:', '', '', ':clown:', ':thinking:', '', '', '', '', '', '', '', '',];
 
@@ -63,7 +63,7 @@ module.exports = class ballCommand extends Command {
 			return Math.floor(Math.random() * (max - min + 1) + min);
 		}
 
-		if(random >= 0.5) {
+		if(random >= 50) {
 			let smile = agreeSmiles[randomIntFromInterval(0, agreeSmiles.length)] ?  agreeSmiles[randomIntFromInterval(0, agreeSmiles.length)] : '';
 			return message.say(`${message.author}, ага ${smile}`)
 		} else {
