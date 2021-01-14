@@ -28,7 +28,8 @@ client.once('ready', () => {
 
 
 client.on('error', console.error);
-console.log(process.env.BOT_TOKE)
+console.log(process.env.BOT_TOKEN)
+console.log(process.env)
 client.login(token);
 // client.login(process.env.BOT_TOKEN);
 
