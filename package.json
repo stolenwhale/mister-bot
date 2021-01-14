@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ."
+    "start": "node bot.js\n"
   },
   "author": "",
   "license": "ISC",
