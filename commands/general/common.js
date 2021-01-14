@@ -1,28 +1,5 @@
 const { Command } = require('discord.js-commando');
 
-module.exports = class SayCommand extends Command {
-	constructor(client) {
-		super(client, {
-			name: 'say',
-			aliases: ['parrot', 'copy', 'скажи'],
-			group: 'general',
-			memberName: 'say',
-			description: 'Повторяет за вами.',
-			args: [
-				{
-					key: 'text',
-					prompt: 'Что мне повторить?',
-					type: 'string',
-				},
-			],
-		});
-	}
-
-	run(message, { text }) {
-		return message.say(text);
-	}
-};
-
 module.exports = class RandomCommand extends Command {
 	constructor(client) {
 		super(client, {
@@ -63,6 +40,34 @@ module.exports = class RollCommand extends Command {
 	run(message) {
 		const random = Math.floor(Math.floor(Math.random() * 100));
 		message.say(`${message.author}, ${random}`)
+	}
+};
+
+module.exports = class ballCommand extends Command {
+	constructor(client) {
+		super(client, {
+			name: '8ball ',
+			aliases: ['погадай', 'шар', 'ответь', 'шарик', 'скажи'],
+			group: 'general',
+			memberName: '8ball ',
+			description: 'Возвращает случайное значение - либо да, либо нет.',
+		});
+	}
+
+	run(message) {
+		const random = Math.floor(Math.floor(Math.random()));
+		const agreeSmiles = ['', ':nerd:', '', '', ':face_with_raised_eyebrow:', '', '', ':lying_face:', '', ':smiling_imp:', '', '', '', ':kissing_heart:'];
+		const disagreeSmiles = [':fearful:', '', '', ':slight_frown:', '', '', '', '', ':pensive:', '', '', ':clown:', ':thinking:', '', '', '', '', '', '', '', '',];
+
+		function randomIntFromInterval(min, max) {
+			return Math.floor(Math.random() * (max - min + 1) + min);
+		}
+
+		if(random >= 0.5) {
+			return message.say(`${message.author}, ага ${agreeSmiles[randomIntFromInterval(0, agreeSmiles.length)]}`)
+		} else {
+			return message.say(`${message.author}, неа ${agreeSmiles[randomIntFromInterval(0, disagreeSmiles.length)]}`)
+		}
 	}
 };
 

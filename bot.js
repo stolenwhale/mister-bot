@@ -25,9 +25,6 @@ client.once('ready', () => {
 	client.user.setActivity('Pandora Saga');
 });
 
-console.log('----------')
-console.log(process.env.BOT_TOKEN)
-
 client.on('error', console.error);
 client.login(process.env.BOT_TOKEN);
 
