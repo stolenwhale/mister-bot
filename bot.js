@@ -2,7 +2,6 @@ const { CommandoClient } = require('discord.js-commando');
 const path = require('path');
 
 const config = require('./config.json');
-const token = config.token;
 const prefix = config.prefix;
 
 const client = new CommandoClient({
@@ -26,6 +25,8 @@ client.once('ready', () => {
 	client.user.setActivity('Pandora Saga');
 });
 
+console.log('----------')
+console.log(process.env.BOT_TOKEN)
 
 client.on('error', console.error);
 client.login(process.env.BOT_TOKEN);
