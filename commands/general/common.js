@@ -67,7 +67,7 @@ module.exports = class ballCommand extends Command {
 			let smile = agreeSmiles[randomIntFromInterval(0, agreeSmiles.length)] ?  agreeSmiles[randomIntFromInterval(0, agreeSmiles.length)] : '';
 			return message.say(`${message.author}, ага ${smile}`)
 		} else {
-			let smile = agreeSmiles[randomIntFromInterval(0, agreeSmiles.length)] ?  agreeSmiles[randomIntFromInterval(0, agreeSmiles.length)] : '';
+			let smile = disagreeSmiles[randomIntFromInterval(0, disagreeSmiles.length)] ?  disagreeSmiles[randomIntFromInterval(0, disagreeSmiles.length)] : '';
 			return message.say(`${message.author}, неа ${smile}`)
 		}
 	}
