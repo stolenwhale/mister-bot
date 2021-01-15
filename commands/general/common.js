@@ -51,10 +51,17 @@ module.exports = class ballCommand extends Command {
 			group: 'general',
 			memberName: '8ball ',
 			description: 'Возвращает случайное значение - либо да, либо нет.',
+			args: [
+				{
+					key: 'question',
+					prompt: 'Какие вопросы, молодой?',
+					type: 'string',
+				},
+			],
 		});
 	}
 
-	run(message) {
+	run(message, {question}) {
 		let random = Math.floor(Math.random() * 100);
 		const agreeSmiles = ['', ':nerd:', '', '', ':face_with_raised_eyebrow:', '', '', ':lying_face:', '', ':smiling_imp:', '', '', '', ':kissing_heart:'];
 		const disagreeSmiles = [':fearful:', '', '', ':slight_frown:', '', '', '', '', ':pensive:', '', '', ':clown:', ':thinking:', '', '', '', '', '', '', '', '',];

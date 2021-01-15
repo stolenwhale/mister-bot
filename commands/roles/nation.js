@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const {Command} = require('discord.js-commando');
 
 module.exports = class SetNationCommand extends Command {
 	constructor(client) {
@@ -18,49 +18,75 @@ module.exports = class SetNationCommand extends Command {
 		});
 	}
 
-	run(message, { nation }) {
+	run(message, {nation}) {
 		const nations = ['Империя', 'Королевство', 'Союз'];
 		let member = message.member;
 		let currentRolesCollection = member.roles.cache;
 		let lastNation = null;
 
-		if(nations.indexOf(nation) === -1) {
+		if (nations.indexOf(nation) === -1) {
 			return message.say(`${member}, такой нации не существует`)
 		}
 
 		currentRolesCollection.each(function (role) {
-			if(nations.indexOf(role.name) >= 0) {
+			if (nations.indexOf(role.name) >= 0) {
 				lastNation = role.name;
 			}
 		});
 
-		if(lastNation === nation) {
+		if (lastNation === nation) {
 			return message.say(`${member}, вы уже состоите в этой нации`)
 		}
 
 		nations.forEach((item) => {
 			let role = message.guild.roles.cache.find(role => role.name === item);
-			if(item === nation) {
+			if (item === nation) {
 				member.roles.add(role)
 			} else {
 				member.roles.remove(role)
 			}
 		});
 
-		if(lastNation === 'Империя') {
-			message.say(`Прощай, Империя! ${member} уходит в ${nation}`)
-		}
+		const nationsDecl = {
+			'Империя': {
+				from: 'Империи',
+				to: 'Империю',
+				where: 'Империи',
+			},
+			'Королевство': {
+				from: 'Королевства',
+				to: 'Королевство',
+				where: 'Королевстве',
+			},
+			'Союз': {
+				from: 'Союза',
+				to: 'Союз',
+				where: 'Союзе',
+			}
+		};
 
-		if(lastNation === 'Королевство') {
-			return message.say(`Король грустит. Из его королевства сбежал ${member}. Привет, ${nation}`)
-		}
+		const phrasesLastNation = [
+			`Прощай, ${lastNation}! ${member} уходит в ${nationsDecl[nation].to}`,
+			`${member} уходит в ${nationsDecl[nation].to}. Обратно 50 рублей на свиток надо.`,
+			`${member} ушел в ${nationsDecl[nation].to}. Если что твина оставил в ${nationsDecl[lastNation].where}.`,
+			`Собаки лают, караван идет. А ${member} идет в ${nationsDecl[nation].to}.`,
+			`Расставашки всегда печалька. ${member} уходит из ${nationsDecl[lastNation].from}`,
+			`${member} сменил знамена`
+		];
 
-		if(lastNation === 'Союз') {
-			return	message.say(`${member}, голубой цвет вам не к лицу. Привет, ${nation}`)
-		}
+		const phrases = [
+			`${member} идет в ${nationsDecl[nation].to}`,
+			`${member} ушел в ${nationsDecl[nation].to}.`,
+			`Собаки лают, караван идет. А ${member} идет в ${nationsDecl[nation].to}.`,
+		];
 
-		if(!lastNation) {
-			return message.say(`Привет, ${nation}. ${member} теперь с вами`)
+		let phrase = '';
+
+		if (lastNation) {
+			phrase = phrasesLastNation[Math.floor(Math.random() * items.length)];
+		} else {
+			phrase = phrases[Math.floor(Math.random() * items.length)];
 		}
+		return message.say(phrase)
 	}
 };
