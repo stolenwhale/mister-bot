@@ -47,7 +47,7 @@ module.exports = class ballCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: '8ball ',
-			aliases: ['погадай', 'шар', 'ответь', 'шарик', 'скажи'],
+			aliases: ['погадай', 'шар', 'ответь', 'шарик', 'скажи', 'скажи,'],
 			group: 'general',
 			memberName: '8ball ',
 			description: 'Возвращает случайное значение - либо да, либо нет.',
