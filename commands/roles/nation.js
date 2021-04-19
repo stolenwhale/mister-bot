@@ -72,7 +72,9 @@ module.exports = class SetNationCommand extends Command {
 			`Собаки лают, караван идет. А ${member} идет в ${nationsDecl[nation].to}.`,
 			`Расставашки всегда печалька. ${member} уходит из ${nationsDecl[lastNation].from}`,
 			`${member} сменил знамена`,
-			`${member} сменил цвет`
+			`${member} сменил цвет`,
+			`${member} вступил в зерг`,
+			`${member} бежал из ${nationsDecl[lastNation].from}`,
 		];
 
 		const phrases = [
@@ -80,7 +82,8 @@ module.exports = class SetNationCommand extends Command {
 			`${member} ушел в ${nationsDecl[nation].to}.`,
 			`Собаки лают, караван идет. А ${member} идет в ${nationsDecl[nation].to}.`,
 			`${member} сменил знамена`,
-			`${member} сменил цвет`
+			`${member} сменил цвет`,
+			`${member} вступил в зерг`
 		];
 
 		let phrase = '';

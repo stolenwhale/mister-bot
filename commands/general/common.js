@@ -63,8 +63,8 @@ module.exports = class ballCommand extends Command {
 
 	run(message, {question}) {
 		let random = Math.floor(Math.random() * 100);
-		const agreeSmiles = ['', ':nerd:', '', '', ':face_with_raised_eyebrow:', '', '', ':lying_face:', '', ':smiling_imp:', '', '', '', ':kissing_heart:'];
-		const disagreeSmiles = [':fearful:', '', '', ':slight_frown:', '', '', '', '', ':pensive:', '', '', ':clown:', ':thinking:', '', '', '', '', '', '', '', '',];
+		const agreeSmiles = [':nerd:', ':face_with_raised_eyebrow:', ':lying_face:', ':smiling_imp:', ':kissing_heart:'];
+		const disagreeSmiles = [':fearful:', ':slight_frown:', ':pensive:', ':clown:', ':thinking:'];
 
 		function randomIntFromInterval(min, max) {
 			return Math.floor(Math.random() * (max - min + 1) + min);
